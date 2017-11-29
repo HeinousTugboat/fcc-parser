@@ -1,8 +1,7 @@
 import * as express from 'express';
 
 const app = express();
-const port = process.argv[2] || 58808;
-
+const port = process.env.PORT;
 app.get('/*', (req, res) => {
     let re = /^Mozilla\/5\.0 \((.*)\).*\(?.*\).*$/g;
     res.send({
@@ -13,5 +12,5 @@ app.get('/*', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log('Listening on '+port+'!');
+    console.log('Listening on '+port+'! '+ new Date(Date.now()));
 });
